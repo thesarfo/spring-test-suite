@@ -185,4 +185,23 @@ class EmployeeRepositoryTests {
         assertThat(gottenEmployee).isNotNull();
     }
 
+    @DisplayName("Unit test for custom query using native SQL with index parameters")
+    @Test
+    void givenFirstNameAndLastName_whenFindByNativeSQL_thenReturnEmployeeObject(){
+        // given - precondition or setup
+        Employee employee = Employee.builder()
+                .firstName("sarfo")
+                .lastName("kofi")
+                .email("native@gmail.com")
+                .build();
+        employeeRepository.save(employee);
+
+        // when - action or behaviour to be tested
+        Employee gottenEmployee = employeeRepository.findByNativeSQL(employee.getFirstName(), employee.getLastName());
+
+        // then - verify the output
+        assertThat(gottenEmployee).isNotNull();
+        assertThat(gottenEmployee.getFirstName()).isEqualTo(employee.getFirstName());
+    }
+
 }
