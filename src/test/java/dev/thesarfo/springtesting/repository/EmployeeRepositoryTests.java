@@ -204,4 +204,22 @@ class EmployeeRepositoryTests {
         assertThat(gottenEmployee.getFirstName()).isEqualTo(employee.getFirstName());
     }
 
+    @Test
+    void givenFirstNameAndLastName_whenFindBySQLNamed_thenReturnEmployeeOBject(){
+        // given - precondition or setup
+        Employee employee = Employee.builder()
+                .firstName("sarfo")
+                .lastName("kofi")
+                .email("native@gmail.com")
+                .build();
+        employeeRepository.save(employee);
+
+        // when - action or behaviour to be tested
+        Employee gottenEmployee = employeeRepository.findByNativeSQL(employee.getFirstName(), employee.getLastName());
+
+        // then - verify the output
+        assertThat(gottenEmployee).isNotNull();
+        assertThat(gottenEmployee.getFirstName()).isEqualTo(employee.getFirstName());
+    }
+
 }
