@@ -1,8 +1,8 @@
-package dev.thesarfo.springtesting.repository;
+package dev.thesarfo.springtesting.integration;
 
 
-import dev.thesarfo.springtesting.integration.AbstractionBaseTest;
 import dev.thesarfo.springtesting.model.Employee;
+import dev.thesarfo.springtesting.repository.EmployeeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
